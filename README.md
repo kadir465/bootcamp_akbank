@@ -1,6 +1,6 @@
-# bootcamp_akbank
-
-#Akbank Derin Öğrenme Bootcamp: Meme Kanseri Histopatolojik Görüntü Sınıflandırması
+    burda girhup readme de nasıl başlıkları büyük yazaradım onları düzelt
+Bootcamp Akbank
+Akbank Derin Öğrenme Bootcamp: Meme Kanseri Histopatolojik Görüntü Sınıflandırması
 Proje Özeti
 Bu proje, Akbank Derin Öğrenme Bootcamp kapsamında geliştirilmiş bir meme kanseri histopatolojik görüntü sınıflandırma sistemidir. BreaKHis veri seti üzerinde Convolutional Neural Network (CNN) mimarisi kullanılarak benign (iyi huylu) ve malignant (kötü huylu) dokuların otomatik sınıflandırılması amaçlanmıştır. Proje, derin öğrenme modellerinin tıbbi görüntü analizindeki uygulanabilirliğini ve explainable AI tekniklerinin klinik karar destek sistemlerindeki önemini vurgulamaktadır.
 
@@ -35,5 +35,7 @@ Proje dosyaları Jupyter Notebook formatında sunulmuştur. Temel bağımlılık
 Gelecek Çalışmalar
 Gelecek çalışmalarda transfer learning tekniklerinin kullanılması, multi-class sınıflandırma ile alt tip ayrımının yapılması, farklı veri setleri üzerinde cross-validation çalışmaları ve klinik entegrasyon için web tabanlı arayüz geliştirilmesi planlanmaktadır.
 
-Veri Seti Adresi:https://www.kaggle.com/datasets/ambarish/breakhis
-Kaggle Adresi:https://www.kaggle.com/code/yucelay/akbank-bootcamp1
+Bağlantılar
+Veri Seti Adresi: https://www.kaggle.com/datasets/ambarish/breakhis
+
+Kaggle Adresi: https://www.kaggle.com/code/yucelay/akbank-bootcamp1
