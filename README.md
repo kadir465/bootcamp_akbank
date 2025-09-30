@@ -38,4 +38,4 @@ Proje dosyaları Jupyter Notebook formatında sunulmuştur. Temel bağımlılık
 # Bağlantılar
 Veri Seti Adresi: https://www.kaggle.com/datasets/ambarish/breakhis
 
-Kaggle Adresi: https://www.kaggle.com/code/yucelay/akbank-bootcamp1
+Kaggle Adresi: https://www.kaggle.com/code/yucelay/akbank-bootcamp1?scriptVersionId=264921293
