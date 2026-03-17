@@ -1,41 +1,95 @@
+# 🔬 Akbank Derin Öğrenme Bootcamp: Meme Kanseri Histopatolojik Görüntü Sınıflandırması
 
-### Bootcamp Akbank
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)
+![Keras Tuner](https://img.shields.io/badge/KerasTuner-Optimized-success.svg)
+![Dataset](https://img.shields.io/badge/Dataset-BreaKHis-lightgrey.svg)
+![Accuracy](https://img.shields.io/badge/Accuracy-85.3%25-green.svg)
 
-# Akbank Derin Öğrenme Bootcamp: Meme Kanseri Histopatolojik Görüntü Sınıflandırması
+## 📌 Proje Özeti
+Bu proje, **Akbank Derin Öğrenme Bootcamp** kapsamında geliştirilmiş, meme kanseri histopatolojik görüntülerini yüksek doğrulukla analiz eden bir sınıflandırma sistemidir. **BreaKHis** veri seti üzerinde **Convolutional Neural Network (CNN)** mimarisi kullanılarak, benign (iyi huylu) ve malignant (kötü huylu) dokuların tam otomatik olarak sınıflandırılması amaçlanmıştır. 
 
-# Proje Özeti
-Bu proje, Akbank Derin Öğrenme Bootcamp kapsamında geliştirilmiş bir meme kanseri histopatolojik görüntü sınıflandırma sistemidir. BreaKHis veri seti üzerinde Convolutional Neural Network (CNN) mimarisi kullanılarak benign (iyi huylu) ve malignant (kötü huylu) dokuların otomatik sınıflandırılması amaçlanmıştır. Proje, derin öğrenme modellerinin tıbbi görüntü analizindeki uygulanabilirliğini ve explainable AI tekniklerinin klinik karar destek sistemlerindeki önemini vurgulamaktadır.
+Ayrıca, derin öğrenme modellerinin şeffaflığını artırmak ve tıbbi karar destek süreçlerine entegrasyonunu kolaylaştırmak amacıyla **Grad-CAM (Explainable AI - Açıklanabilir Yapay Zeka)** teknikleri kullanılmıştır.
 
-# Proje Amacı
-Meme kanseri, dünyada kadınlarda en sık görülen kanser türü olup erken teşhis hayat kurtarıcı öneme sahiptir. Geleneksel histopatolojik incelemeler uzman bağımlılığı, subjektif değerlendirmeler ve zaman alıcı süreçler içermektedir. Bu projenin temel amacı, patologların iş yükünü hafifletecek, standartize edilmiş ve yüksek doğruluklu bir otomatik tanı destek sistemi geliştirmektir.
+---
 
-# Veri Seti
-Çalışmada BreaKHis (Breast Cancer Histopathological Database) veri seti kullanılmıştır. Veri seti 82 hastadan alınan 7,909 histopatolojik görüntü içermektedir. Görüntüler 40X, 100X, 200X ve 400X büyütme oranlarında olup 700x460 piksel çözünürlüğe sahiptir. Veri seti 2,480 benign ve 5,429 malignant görüntüden oluşmaktadır. Benign kategoride adenosis, fibroadenoma, phyllodes tümör ve tübüler adenoma; malignant kategoride duktal karsinom, lobuler karsinom, müsinöz karsinom ve papiller karsinom alt tipleri bulunmaktadır.
+## 🎯 Proje Amacı
+Meme kanseri, dünya genelinde kadınlarda en sık görülen kanser türü olup **erken ve doğru teşhis** hayat kurtarıcı bir rol oynamaktadır. Geleneksel histopatolojik incelemeler uzman patologlara bağımlı, zaman alıcı ve göreceli değerlendirmelere açık olabilmektedir. 
 
-# Yöntem
-Teknolojik Altyapı
-Projede Python programlama dili ve TensorFlow derin öğrenme kütüphanesi kullanılmıştır. Veri işleme için Pandas ve NumPy, görselleştirme için Matplotlib ve Seaborn kütüphanelerinden yararlanılmıştır. Hiperparametre optimizasyonu için Keras Tuner kullanılmıştır.
+Bu projenin temel hedefi:
+* Patologların iş yükünü hafifletmek,
+* Standartlaşmış, hızlı ve yüksek doğruluklu bir "İkincil Görüş" (Second Opinion) sistemi sunmak,
+* Explainable AI (XAI) yaklaşımlarıyla doktorların model kararlarına olan güvenini artırmaktır.
 
-# Model Mimarisi
-Sequential CNN mimarisi kullanılarak iki konvolüsyon katmanı, max pooling katmanları, batch normalizasyon ve dropout katmanlarından oluşan bir model geliştirilmiştir. Modelin çıkış katmanında sigmoid aktivasyon fonksiyonu ile binary sınıflandırma yapılmıştır.
+---
 
-# Veri Ön İşleme
-Görüntüler 64x64 piksel boyutuna yeniden ölçeklendirilmiş ve piksel değerleri 0-1 aralığına normalize edilmiştir. Veri artırma teknikleri kullanılarak modelin generalize yeteneği geliştirilmiştir. Rotation, shift, zoom, flip ve brightness adjustment gibi dönüşümler uygulanmıştır.
+## 📊 Veri Seti (BreaKHis)
+Çalışmada **[Breast Cancer Histopathological Database (BreaKHis)](https://www.kaggle.com/datasets/ambarish/breakhis)** veri seti kullanılmıştır.
 
-# Hiperparametre Optimizasyonu
-Random Search yöntemi ile hiperparametre optimizasyonu gerçekleştirilmiştir. Katman sayısı, filtre sayısı, öğrenme oranı, optimizer tipi ve dropout oranı gibi parametreler optimize edilmiştir.
+* **Hasta Sayısı:** 82
+* **Toplam Görüntü:** 7,909 adet histopatolojik görüntü
+* **Çözünürlük ve Büyütme:** 700x460 piksel; 40X, 100X, 200X ve 400X klinik büyütme oranları
+* **Sınıf Dağılımı:**
+  * 🟢 **Benign (İyi Huylu) - 2,480:** Adenozis, Fibroadenom, Fillodes Tümör, Tübüler Adenom
+  * 🔴 **Malignant (Kötü Huylu) - 5,429:** Duktal Karsinom, Lobüler Karsinom, Müsinöz Karsinom, Papiller Karsinom
 
-# Sonuçlar
-Model validation veri seti üzerinde %85.3 doğruluk, %87.1 kesinlik ve %83.5 duyarlılık değerlerine ulaşmıştır. Grad-CAM (Gradient-weighted Class Activation Mapping) tekniği ile modelin karar mekanizması görselleştirilmiş ve modelin malignant sınıflandırmasında tümör hücre kümelerine odaklandığı gözlemlenmiştir. Örnek bir test görüntüsü üzerinde %92 güven oranıyla malignant tahmini yapılmıştır.
+---
 
-# Katkılar ve Yenilikler
-Bu çalışma, derin öğrenme tabanlı sistemlerin tıbbi görüntü analizindeki potansiyelini göstermektedir. Grad-CAM görselleştirmesi ile model kararlarının interpretable hale getirilmesi, klinik uygulamalarda güven artırıcı bir faktör olarak öne çıkmaktadır. Proje, sınırlı veri ile yüksek performanslı model geliştirme stratejileri ve explainable AI'nın tıbbi tanı sistemlerindeki uygulanabilirliği açısından önemli katkılar sunmaktadır.
+## ⚙️ Yöntem ve Teknolojik Altyapı
 
-# Kullanım
-Proje dosyaları Jupyter Notebook formatında sunulmuştur. Temel bağımlılıkların yüklenmesinin ardından notebook'lar çalıştırılabilir. Model eğitimi, hiperparametre optimizasyonu ve Grad-CAM görselleştirmesi için ayrı bölümler bulunmaktadır. Veri setine Kaggle üzerinden erişim sağlanabilmektedir.
+* **Diller ve Kütüphaneler:** Python, TensorFlow / Keras, NumPy, Pandas, Matplotlib, Seaborn
+* **Veri Ön İşleme (Preprocessing):** Tüm görüntüler model optimizasyonu için `64x64` boyutuna yeniden ölçeklendirilmiş ve normalize edilmiştir (Min-Max Scaling `0-1` aralığında). 
+* **Veri Artırma (Data Augmentation):** Aşırı öğrenmeyi (overfitting) önlemek ve genelleme yeteneğini artırmak amacıyla Rotation (döndürme), Shift (kaydırma), Zoom (yakınlaştırma), Flip (çevirme) ve Parlaklık (brightness) ayarı işlemleri uygulanmıştır.
 
+### 🧠 Model Mimarisi
+Projede baştan sona (End-to-End) eğitilen özelleştirilmiş bir **Sequential CNN** mimarisi tasarlanmıştır:
+1. **Feature Extraction:** İki Convolutional (Evrişim) katmanı
+2. **Pooling:** Maksimum Havuzlama (Max Pooling) katmanları
+3. **Regularization:** Batch Normalizasyon ve Dropout katmanları
+4. **Sınıflandırma (Classification):** Çıkış katmanında ikili sınıflandırma (Binary Classification) işlemi için **Sigmoid** aktivasyon fonksiyonu.
 
-# Bağlantılar
-Veri Seti Adresi: https://www.kaggle.com/datasets/ambarish/breakhis
+### 🔍 Hiperparametre Optimizasyonu
+**Keras Tuner / Random Search** metodu kullanılarak model kapasitesi maksimum seviyeye çıkarılmıştır. Optimize edilen parametreler:
+* Evrişim (Conv) ve Yoğun (Dense) katman sayıları,
+* Katmanlardaki filtre / nöron sayıları,
+* Dropout oranları, Optimizer algoritmaları ve Learning Rate (Öğrenme Oranı).
 
-Kaggle Adresi: https://www.kaggle.com/code/yucelay/akbank-bootcamp1?scriptVersionId=264921293
+---
+
+## 📈 Sonuçlar ve Performans
+
+Model doğrulama (validation) seti üzerindeki nihai performansı:
+
+| Metrik | Değer |
+| :--- | :--- |
+| **Doğruluk (Accuracy)** | `%85.3` |
+| **Kesinlik (Precision)** | `%87.1` |
+| **Duyarlılık (Recall)** | `%83.5` |
+
+### 💡 Explainable AI (XAI) - Grad-CAM Görselleştirmesi
+Modelin "kara kutu" (black-box) yapısını kırmak için uygulanan **Grad-CAM (Gradient-weighted Class Activation Mapping)** tekniği sayesinde:
+* Modelin bir hastayı "Malignant" (Tümörlü) olarak tahmin ederken histopatolojik görüntünün hangi bölgelerine odaklandığı, ısı haritaları (Heatmap) aracılığıyla görselleştirilmiştir. 
+* Örnek bir görüntü üzerinde model **%92 güven oranıyla** malignant sınıf tahmini yapıp bölgeyi açıkça işaretleyebilmiştir.
+
+---
+
+## 🚀 Kurulum ve Kullanım
+
+Projeyi lokal ortamınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
+
+1. Gerekli kütüphaneleri yükleyin:
+   ```bash
+   pip install tensorflow keras-tuner numpy pandas matplotlib seaborn opencv-python jupyter
+   ```
+2. Jupyter Notebook'u başlatın:
+   ```bash
+   jupyter notebook
+   ```
+3. `breast_cancer_classification.ipynb` dosyasını açarak hücreleri sırasıyla çalıştırın.
+
+---
+
+## 📎 Bağlantılar & Kaynakça
+
+* 📊 **Veri Seti:** [Kaggle BreaKHis Dataset](https://www.kaggle.com/datasets/ambarish/breakhis)
+* 💻 **Kaggle Notebook Yayını:** [Kaggle Projesi - Akademi Versiyonu](https://www.kaggle.com/code/yucelay/akbank-bootcamp1?scriptVersionId=264921293)
